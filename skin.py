@@ -1,10 +1,14 @@
 import discord
+import json
 
 from discord.ext import commands
 
 # mcuuid-1.0.1 - in requirements.txt
 from mcuuid import MCUUID
 from mcuuid.tools import is_valid_minecraft_username
+
+#Akoots cool helper tool
+import util.io_util as io_util
 
 
 intents = discord.Intents().all()
@@ -43,4 +47,6 @@ async def image(ctx,*,entry):
         skin_Embed.set_image(url = f'https://visage.surgeplay.com/full/512/{id_}.png')
         await ctx.send(embed = skin_Embed)
 
-skin.run("NzczMzYzNzkwOTMwNjQwOTQ4.X6IJKA.EFMiw21cdlZb4uRDa-zFxyW3X70")
+token = io_util.load_json('auth.json')['token']
+
+skin.run(token)
